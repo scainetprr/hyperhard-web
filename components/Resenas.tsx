@@ -3,19 +3,13 @@ import Nebula from "@/components/Nebula";
 
 export default function Resenas() {
   const resenas = [
-{ nombre: "mathiclipp", rango: "GUARDIAN", texto: "Un server muy bueno y con muchos eventos y minijuegos entretenidos como por ejemplo el de apostar. Me parece un buen server por su survival op que está muy entretenido.", estrellas: 5, modalidad: "Survival Custom" },
-{ nombre: "el_polo", rango: "DESTRUCTOR", texto: "Es muy buen server la verdad llevo muy buen tiempo jugando y esta de lo mejor.", estrellas: 5, modalidad: "Survival Custom" },
-    { nombre: "CrimsonWolf99", rango: "GUARDIAN", texto: "El casino y las apuestas son adictivos jaja. La economía está muy bien pensada. Ya llevo 200 horas y sigo descubriendo cosas nuevas.", estrellas: 5, modalidad: "Survival Custom" },
-    { nombre: "NightFury2024", rango: "INMORTAL", texto: "Los eventos son épicos. Los bosses de las dungeons me volaron la cabeza la primera vez. Una comunidad increíble y un servidor premium.", estrellas: 5, modalidad: "Lifesteal" },
-    { nombre: "IronPhoenix_", rango: "DESTRUCTOR", texto: "Vine por curiosidad y me quedé por la comunidad. El Battle Pass está muy bien hecho y siempre hay algo nuevo que conseguir.", estrellas: 5, modalidad: "Survival Custom" },
-    { nombre: "VoidReaper__", rango: "GUARDIAN", texto: "La mejor experiencia Minecraft que he tenido en años. El equipo detrás del servidor se nota que le pone mucho amor. Excelente trabajo.", estrellas: 5, modalidad: "Lifesteal" },
+    { nombre: "mathiclipp", texto: "Un server muy bueno y con muchos eventos y minijuegos entretenidos como por ejemplo el de apostar. Me parece un buen server por su survival op que está muy entretenido.", estrellas: 5, modalidad: "Survival Custom" },
+    { nombre: "el_polo", texto: "Es muy buen server la verdad llevo muy buen tiempo jugando y esta de lo mejor.", estrellas: 5, modalidad: "Survival Custom" },
+    { nombre: "CrimsonWolf99", texto: "El casino y las apuestas son adictivos jaja. La economía está muy bien pensada. Ya llevo 200 horas y sigo descubriendo cosas nuevas.", estrellas: 5, modalidad: "Survival Custom" },
+    { nombre: "NightFury2024", texto: "Los eventos son épicos. Los bosses de las dungeons me volaron la cabeza la primera vez. Una comunidad increíble y un servidor premium.", estrellas: 5, modalidad: "Lifesteal" },
+    { nombre: "IronPhoenix_", texto: "Vine por curiosidad y me quedé por la comunidad. El Battle Pass está muy bien hecho y siempre hay algo nuevo que conseguir.", estrellas: 5, modalidad: "Survival Custom" },
+    { nombre: "VoidReaper__", texto: "La mejor experiencia Minecraft que he tenido en años. El equipo detrás del servidor se nota que le pone mucho amor. Excelente trabajo.", estrellas: 5, modalidad: "Lifesteal" },
   ];
-
-  const rangoColor: Record<string, string> = {
-    "INMORTAL": "#3b82f6",
-    "DESTRUCTOR": "#ef4444",
-    "GUARDIAN": "#f59e0b",
-  };
 
   return (
     <section style={{backgroundColor: "#000", padding: "100px 20px", position: "relative"}}>
@@ -61,8 +55,8 @@ export default function Resenas() {
                   <div style={{color: "#4b5563", fontSize: "12px"}}>{r.modalidad}</div>
                 </div>
               </div>
-              <span style={{backgroundColor: `${rangoColor[r.rango]}15`, border: `1px solid ${rangoColor[r.rango]}40`, color: rangoColor[r.rango], padding: "4px 12px", borderRadius: "999px", fontSize: "11px", fontWeight: "700", letterSpacing: "1px"}}>
-                {r.rango}
+              <span style={{backgroundColor: "rgba(107,114,128,0.15)", border: "1px solid rgba(107,114,128,0.3)", color: "#6b7280", padding: "4px 12px", borderRadius: "999px", fontSize: "11px", fontWeight: "700", letterSpacing: "1px"}}>
+                USUARIO
               </span>
             </div>
           </div>
