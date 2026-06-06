@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import SurvivalHero from "@/components/SurvivalHero";
 import Features from "@/components/Features";
+import SurvivalGuide from "@/components/SurvivalGuide";
 import Dungeons from "@/components/Dungeons";
 import Footer from "@/components/Footer";
 
@@ -11,6 +12,7 @@ export default function SurvivalPage() {
       <div style={{paddingTop: "70px"}}>
         <SurvivalHero />
         <Features />
+        <SurvivalGuide />
         <Dungeons />
       </div>
       <Footer />
