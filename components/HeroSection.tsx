@@ -11,7 +11,7 @@ export default function HeroSection() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch("https://api.mcsrvstat.us/3/us-1.av.supercores.host:25000");
+        const res = await fetch("https://api.mcstatus.io/v2/status/java/us-1.av.supercores.host:25000");
         const data = await res.json();
         if (data.online) {
           setPlayers(data.players?.online ?? 0);
