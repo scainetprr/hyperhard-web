@@ -6,7 +6,7 @@ export default function Staff() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   const miembros = [
-    { nombre: "scainetprr_YT", rol: "Fundador", tags: ["Fundador", "Configurador", "Builder", "Desarrollador"], color: "#ef4444", glow: "rgba(239,68,68,0.2)", icono: "👑", descripcion: "Creador y cerebro detrás de HyperHard Network. Lleva el servidor desde sus inicios con pasión y dedicación total." },
+    { nombre: "scainetprr", rol: "Fundador", tags: ["Fundador", "Configurador", "Builder", "Desarrollador"], color: "#ef4444", glow: "rgba(239,68,68,0.2)", icono: "👑", descripcion: "Creador y cerebro detrás de HyperHard Network. Lleva el servidor desde sus inicios con pasión y dedicación total." },
     { nombre: "HadesAgogo", rol: "Desarrollador", tags: ["Desarrollador"], color: "#3b82f6", glow: "rgba(59,130,246,0.2)", icono: "⚙", descripcion: "Responsable del desarrollo técnico del servidor. Hace posible los sistemas más complejos de HyperHard." },
     { nombre: "Nelmo1226", rol: "CEO & Builder", tags: ["Builder", "CEO"], color: "#f59e0b", glow: "rgba(245,158,11,0.2)", icono: "🏗", descripcion: "Construye los mundos y estructuras épicas que hacen de HyperHard un servidor visualmente increíble." },
   ];
