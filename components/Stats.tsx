@@ -1,15 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Nebula from "@/components/Nebula";
+
 export default function Stats() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [players, setPlayers] = useState<number | null>(null);
+  const [serverOnline, setServerOnline] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const res = await fetch("https://api.mcsrvstat.us/3/us-1.av.supercores.host:25000");
+        const data = await res.json();
+        if (data.online) {
+          setPlayers(data.players?.online ?? 0);
+          setServerOnline(true);
+        } else {
+          setPlayers(null);
+          setServerOnline(false);
+        }
+      } catch {
+        setPlayers(null);
+        setServerOnline(false);
+      }
+    };
+    fetchStatus();
+    const interval = setInterval(fetchStatus, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const stats = [
     { valor: "40+", label: "Jugadores Registrados", icono: "👥", color: "#ef4444" },
     { valor: "2", label: "Modalidades Activas", icono: "⚔", color: "#3b82f6" },
     { valor: "50+", label: "Encantamientos Custom", icono: "✨", color: "#8b5cf6" },
-    { valor: "24/7", label: "Servidor Online", icono: "🟢", color: "#10b981" },
+    { valor: serverOnline === null ? "..." : serverOnline ? "🟢 Online" : "🔴 Apagado", label: "Servidor", icono: serverOnline === true ? "🟢" : "🔴", color: serverOnline === true ? "#10b981" : "#ef4444" },
     { valor: "3", label: "Rangos Disponibles", icono: "👑", color: "#f59e0b" },
     { valor: "3+", label: "Años Activos", icono: "🏆", color: "#ef4444" },
   ];

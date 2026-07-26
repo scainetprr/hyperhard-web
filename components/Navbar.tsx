@@ -15,7 +15,7 @@ export default function Navbar() {
   }, []);
 
   const copyIP = () => {
-    navigator.clipboard.writeText("mc.hyperhard.space");
+    navigator.clipboard.writeText("us-1.av.supercores.host");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -77,7 +77,7 @@ export default function Navbar() {
         </div>
 
         <button onClick={copyIP} className="ip-btn" style={{backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#fca5a5", padding: "8px 20px", borderRadius: "8px", fontSize: "13px", fontWeight: "700", cursor: "pointer", fontFamily: "monospace", letterSpacing: "1px"}}>
-          {copied ? "✓ Copiada!" : "mc.hyperhard.space"}
+          {copied ? "✓ Copiada!" : "us-1.av.supercores.host"}
         </button>
       </div>
     </nav>

@@ -10,7 +10,7 @@ export default function ServerStatus() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch("https://api.mcsrvstat.us/3/mc.hyperhard.space");
+        const res = await fetch("https://api.mcsrvstat.us/3/us-1.av.supercores.host:25000");
         const data = await res.json();
         if (data.online) {
           setPlayers(data.players?.online ?? 0);
@@ -34,10 +34,10 @@ export default function ServerStatus() {
       <div style={{width: "10px", height: "10px", borderRadius: "50%", backgroundColor: status === "online" ? "#4ade80" : status === "offline" ? "#ef4444" : "#f59e0b", boxShadow: status === "online" ? "0 0 10px #4ade80" : "none", animation: status === "loading" ? "blink 1s infinite" : "none"}} />
       <div>
         <div style={{color: "white", fontWeight: "700", fontSize: "18px"}}>
-          {status === "loading" ? "..." : status === "offline" ? "Offline" : `${players} jugadores`}
+          {status === "loading" ? "..." : status === "offline" ? "Apagado" : `${players} jugadores`}
         </div>
         <div style={{color: "#6b7280", fontSize: "11px", letterSpacing: "2px", textTransform: "uppercase"}}>
-          {status === "online" ? `de ${maxPlayers} máximo` : status === "loading" ? "Conectando..." : "Servidor caído"}
+          {status === "online" ? `de ${maxPlayers} máximo` : status === "loading" ? "Conectando..." : "Servidor apagado"}
         </div>
       </div>
     </div>

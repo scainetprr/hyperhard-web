@@ -4,7 +4,31 @@ import { useState, useEffect } from "react";
 
 export default function HeroSection() {
   const [copied, setCopied] = useState(false);
-  const serverIP = "mc.hyperhard.space";
+  const [players, setPlayers] = useState<number | null>(null);
+  const [serverOnline, setServerOnline] = useState<boolean | null>(null);
+  const serverIP = "us-1.av.supercores.host";
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const res = await fetch("https://api.mcsrvstat.us/3/us-1.av.supercores.host:25000");
+        const data = await res.json();
+        if (data.online) {
+          setPlayers(data.players?.online ?? 0);
+          setServerOnline(true);
+        } else {
+          setPlayers(null);
+          setServerOnline(false);
+        }
+      } catch {
+        setPlayers(null);
+        setServerOnline(false);
+      }
+    };
+    fetchStatus();
+    const interval = setInterval(fetchStatus, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
 
 const copyIP = () => {
@@ -88,9 +112,9 @@ const copyIP = () => {
 
       <div className="hero-content" style={{textAlign: "center", position: "relative", zIndex: 10, padding: "0 20px"}}>
 
-        <div style={{display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "rgba(127,29,29,0.3)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: "999px", padding: "8px 20px", marginBottom: "32px"}}>
-          <div style={{width: "8px", height: "8px", backgroundColor: "#4ade80", borderRadius: "50%", animation: "blink 1.5s infinite"}} />
-          <span style={{color: "#fca5a5", fontSize: "12px", fontWeight: "600", letterSpacing: "3px", textTransform: "uppercase"}}>Servidor Online</span>
+        <div style={{display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: serverOnline === true ? "rgba(127,29,29,0.3)" : "rgba(50,50,50,0.3)", border: `1px solid ${serverOnline === true ? "rgba(239,68,68,0.3)" : "rgba(100,100,100,0.3)"}`, borderRadius: "999px", padding: "8px 20px", marginBottom: "32px"}}>
+          <div style={{width: "8px", height: "8px", backgroundColor: serverOnline === true ? "#4ade80" : serverOnline === false ? "#ef4444" : "#f59e0b", borderRadius: "50%", animation: serverOnline === true ? "blink 1.5s infinite" : "none"}} />
+          <span style={{color: serverOnline === true ? "#fca5a5" : "#9ca3af", fontSize: "12px", fontWeight: "600", letterSpacing: "3px", textTransform: "uppercase"}}>{serverOnline === null ? "Verificando..." : serverOnline ? "Servidor Online" : "Servidor Apagado"}</span>
         </div>
 
         <h1 style={{fontSize: "clamp(60px, 13vw, 140px)", fontWeight: "900", letterSpacing: "-6px", margin: "0 0 16px 0", lineHeight: 0.9}}>
@@ -118,7 +142,7 @@ const copyIP = () => {
         <div style={{display: "flex", gap: "56px", justifyContent: "center", flexWrap: "wrap"}}>
           {[
             {label: "Modalidades", value: "2+"},
-            {label: "Jugadores Online", value: "🟢 Live"},
+            {label: "Jugadores Online", value: serverOnline === null ? "..." : serverOnline ? `🟢 ${players}` : "🔴 Apagado"},
             {label: "Encantamientos", value: "50+"},
           ].map(stat => (
             <div key={stat.label} className="stat-item" style={{textAlign: "center", cursor: "default"}}>
